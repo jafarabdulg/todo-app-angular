@@ -10,6 +10,8 @@ export class TodoComponent {
 
   name: string = '';
   description: string = '';
+  isDone: boolean = false;
+  doneMessage: string = 'Done';
 
   onKeyPress(event: any): void{
     if (event.target.id === 'todo') {
@@ -23,11 +25,10 @@ export class TodoComponent {
     const todo = {
       name: this.name,
       description: this.description,
-      isDone: false
+      isDone: this.isDone,
+      doneMessage: this.doneMessage
     }
     this.todos.push(todo);
-    // console.log(this.todos, 'todos')
-    // console.log(todo, 'todo')
   }
 
   delete(index: number): void{
@@ -37,18 +38,8 @@ export class TodoComponent {
     }
   }
 
-  doneClicked: boolean = false;
-  doneMessage: string = 'Done';
   done(index: number): void {
-    this.doneClicked = !this.doneClicked;
-    if (this.doneClicked) {
-      this.doneMessage = 'Cancel';
-    } else {
-      this.doneMessage = 'Done';
-    }
-
     this.todos[index].isDone = !this.todos[index].isDone;
-
-    console.log(index)
+    this.todos[index].doneMessage = this.todos[index].isDone ? 'Undone' : 'Done';
   }
 }
