@@ -1,0 +1,36 @@
+<div class="container card d-flex flex-column align-items-center w-50">
+  <div class="card-header text-center w-100 bg-white">
+    <img class="w-50" src="assets/images/todo-icon.png" alt="todo-img">
+  </div>
+  <div class="card-body w-100">
+    <form>
+      <h3>Todo App</h3>
+      <input type="text" class="form-control mb-2" id="todo" (input)="onKeyPress($event)" placeholder="What do you want to do?">
+      <input type="text" class="form-control mb-2" id="description" (input)="onKeyPress($event)" placeholder="Describe more here...">
+      <button type="button" (click)="submit()" class="btn btn-primary mb-3 w-100">Add</button>
+    </form>
+
+    <div class="todo-list">
+      <h3>Todo List</h3>
+      <table class="table w-100">
+        <thead>
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">Todo</th>
+            <th scope="col">Description</th>
+            <th scope="col" class="text-center" style="width: 32%">Action</th>
+          </tr>
+        </thead>
+        <tr *ngFor="let todo of todos; let i = index">
+          <td>{{i+1}}</td>
+          <td [class.text-decoration-line-through]="doneClicked">{{todo.name}}</td>
+          <td [class.text-decoration-line-through]="doneClicked">{{todo.description}}</td>
+          <td class="d-flex justify-content-center gap-1">
+            <button class="btn btn-sm" [class.btn-success]="!doneClicked" [class.btn-warning]="doneClicked" [innerHTML]="doneMessage" (click)="done(i)"></button>
+            <button (click)="delete(i)" class="btn btn-danger btn-sm">Delete</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
