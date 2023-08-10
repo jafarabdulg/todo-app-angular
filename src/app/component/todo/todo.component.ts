@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'app-todo',
@@ -6,6 +6,12 @@ import {Component} from '@angular/core';
   styleUrls: ['./todo.component.css']
 })
 export class TodoComponent {
+  @Output() logoutReq = new EventEmitter<boolean>();
+
+  handleLogoutReq() {
+    this.logoutReq.emit(false);
+  }
+
   todos: any[] = [];
 
   name: string = '';
