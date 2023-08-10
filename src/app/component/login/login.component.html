@@ -1,0 +1,10 @@
+<div class="login d-flex justify-content-center align-items-center">
+  <div class="container shadow border rounded pt-5 pb-5 w-25">
+    <div class="container w-75 mb-2">
+      <img class="img-fluid" src="./assets/images/login-picture.svg" alt="login-picture">
+    </div>
+    <input type="email" id="email" class="form-control mb-2" (input)="getInput($event)" placeholder="Email">
+    <input type="password" id="password" class="form-control mb-2" (input)="getInput($event)" placeholder="Password">
+    <input type="button" class="btn btn-primary w-100" (click)="checkAuth()" value="Login">
+  </div>
+</div>
