@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'challenge-project';
+
+  isLogin: boolean = false;
+
+  getLogin(value: boolean) {
+    this.isLogin = value;
+  }
 }

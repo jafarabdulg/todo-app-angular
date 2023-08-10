@@ -1,1 +1,2 @@
-<app-todo></app-todo>
+<app-login *ngIf="!isLogin" [isLogin]="isLogin" (auth)="getLogin($event)"></app-login>
+<app-todo *ngIf="isLogin;" (logoutReq)="getLogin($event)"></app-todo>
